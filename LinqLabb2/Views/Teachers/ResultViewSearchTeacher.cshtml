@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LinqLabb2.Models.Domain.Class>
+
+@{
+    ViewData["Title"] = "SearchTeacher";
+}
+
+<h1>Sökresultat för lärare</h1>
+
+<table class="table table-success table-striped table-hover">
+    <thead class="table"><br />
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Teachers.TFirstName)
+                @Html.DisplayNameFor(model => model.Teachers.TLastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teachers.TFirstName)
+                    @Html.DisplayFor(modelItem => item.Teachers.TLastName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="SearchTeacher">Ny sökning</a> 
+</div>
+<div>
+    <a asp-action="Index">Öververblick av lärare</a>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LinqLabb2.Models.Domain.Class>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Klass</h1>
+
+<p>
+    <a asp-action="Create">Lägg till klass</a>
+</p>
+<table class="table table-success table-striped table-hover">
+    <thead class="table"><br />
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teachers.TFirstName)
+                @Html.DisplayNameFor(model => model.Teachers.TLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teachers.TFirstName)
+                @Html.DisplayFor(modelItem => item.Teachers.TLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.CourseName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClassId">Ändra</a> |
+                <a asp-action="Details" asp-route-id="@item.ClassId">Detaljer</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClassId">Ta bort</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LinqLabb2.Models.Domain.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kurs</h1>
+
+<p>
+    <a asp-action="Create">Lägg till kurs</a>
+</p>
+<table class="table table-success table-striped table-hover">
+    <thead class="table"><br />
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CourseId">Ändra</a> |
+                <a asp-action="Details" asp-route-id="@item.CourseId">Detaljer</a> |
+                <a asp-action="Delete" asp-route-id="@item.CourseId">Ta bort</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

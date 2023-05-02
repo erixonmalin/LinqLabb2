@@ -1,0 +1,44 @@
+﻿@model LinqLabb2.Models.Domain.Class
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Ändra</h1>
+
+<h4>Klass</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ClassId" />
+            <div class="form-group">
+                <label asp-for="ClassName" class="control-label"></label>
+                <input asp-for="ClassName" class="form-control" />
+                <span asp-validation-for="ClassName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FK_TeacherId" class="control-label"></label>
+                <select asp-for="FK_TeacherId" class="form-control" asp-items="ViewBag.FK_TeacherId"></select>
+                <span asp-validation-for="FK_TeacherId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FK_CourseId" class="control-label"></label>
+                <select asp-for="FK_CourseId" class="form-control" asp-items="ViewBag.FK_CourseId"></select>
+                <span asp-validation-for="FK_CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Spara" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Tillbaka till listan</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
